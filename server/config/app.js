@@ -21,7 +21,7 @@ mongoDB.once('open', ()=> {
 
 // define routers
 let index = require('../routes/index'); // top level routes
-let books = require('../routes/surveys'); // routes for surveys
+let surveys = require('../routes/surveys'); // routes for surveys
 
 let app = express();
 

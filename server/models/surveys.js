@@ -4,7 +4,7 @@ let mongoose = require('mongoose');
 let Survey = mongoose.Schema({
     Name: String,
     Description: String,
-    Company: String,
+    Company: String
     
 },
 {

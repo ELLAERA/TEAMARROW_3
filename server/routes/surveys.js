@@ -4,7 +4,8 @@ let router = express.Router();
 let mongoose = require('mongoose');
 
 // define the survey model
-let book = require('../models/surveys');
+let surveys = require('../models/surveys');
+let Survey = require('../models/surveys');
 
 /* GET survey List page. READ */
 router.get('/', (req, res, next) => {
@@ -34,15 +35,15 @@ router.get('/add', (req, res, next) => {
 // POST process the Survey Details page and create a new Survey - CREATE
 router.post('/add', (req, res, next) => {
 
-  let newSurvey = survey({
+  let newSurvey = Survey({
     "Name": req.body.name,
     "Description":req.body.description,
-     "Company": req.body.company,
+     "Company": req.body.company
      
     });
 
 
-survey.create(newSurvey, (err, survey) =>{
+surveys.create(newSurvey, (err, Survey) =>{
     if(err)
     {
         console.log(err);
@@ -61,37 +62,59 @@ router.get('/:id', (req, res, next) => {
 
   let id = req.params.id;
 
-  
-
-
-
-
+  Survey.findById(id, (err, surveysToEdit) => {
+    if(err)
+    {
+        console.log(err);
+        res.end(err);
+    }
+    else
+    {
+        //show the edit view
+        res.render('books/details', {
+          title: 'Edit Book', 
+          books: bookToEdit
+        })
+    }
 });
+});
+
 
 // POST - process the information passed from the details form and update the document
 router.post('/:id', (req, res, next) => {
 
+  let id = req.params.id
+
+     let updatedSurvey = Survey({
+          "_id": id,
+          "Name": req.body.name,
+          "Description":req.body.description,
+          "Company": req.body.company
+         
+     });
  
-
-
-
-
-
-
-
-
-
-
-
-
+     Survey.updateOne({_id: id}, updatedBook, {}, (err) => {
+         if(err)
+         {
+             console.log(err);
+             res.end(err);
+         }
+         else
+         {
+             // refresh the book list
+             res.redirect('/surveys');
+         }
+     });
 });
+
+
 
 // GET - process the delete by user id
 router.get('/delete/:id', (req, res, next) => {
 
   let id = req.params.id;
 
-  survey.remove({_id: id}, (err) => {
+  Survey.remove({_id: id}, (err) => {
       if(err)
       {
           console.log(err);
@@ -107,3 +130,5 @@ router.get('/delete/:id', (req, res, next) => {
 
 
 module.exports = router;
+
+
