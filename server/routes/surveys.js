@@ -71,9 +71,9 @@ router.get('/:id', (req, res, next) => {
     else
     {
         //show the edit view
-        res.render('books/details', {
-          title: 'Edit Book', 
-          books: bookToEdit
+        res.render('surveys/details', {
+          title: 'Edit Survey', 
+          surveys: surveysToEdit
         })
     }
 });
@@ -93,7 +93,7 @@ router.post('/:id', (req, res, next) => {
          
      });
  
-     Survey.updateOne({_id: id}, updatedBook, {}, (err) => {
+     Survey.updateOne({_id: id}, updatedSurvey, {}, (err) => {
          if(err)
          {
              console.log(err);
