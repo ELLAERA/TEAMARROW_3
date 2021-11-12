@@ -1,37 +1,32 @@
-<% include ../partials/header.ejs %>
+<%- include ('../partials/header') %>
 
     <!-- MAIN CONTENT -->
-    <div class="container">
+     <div class="container">
       <div class="row">
         <div class="col-md-offset-3 col-md-6">
           <h1><%= title %></h1>
             <form class="form" method="post">
               <div class="form-group">
-                <label for="NameTextField">Name</label>
-                <input type="text" class="form-control" id="NameTextField"
-                placeholder="Survey Name" name="name" value="<%= surveys.Name %>" required>
+                <label for="NameTextField">Survey Title</label>
+                <input type="text" class="form-control" id=""
+                placeholder="" name="title" value="<%= surveys.Title %>" required>
               </div>
               <div class="form-group">
-                <label for="DescriptionTextField">Description</label>
-                <input type="text" class="form-control" id="DescriptionTextField"
-                placeholder="Survey Description" name="description" value="<%= surveys.Description %>"  required>
+                <label for="AuthorTextField">Author</label>
+                <input type="text" class="form-control" id="AuthorTextField"
+                placeholder="" name="author" value="<%= surveys.Author %>"  required>
               </div>
               <div class="form-group">
-                <label for="CompanyTextField">Company</label>
-                <input type="text" class="form-control" id="CompanyTextField"
-                placeholder="Survey Company" name="company" value="<%= surveys.Company %>"  required>
+                <label for="StartDateTextField">Start Date</label>
+                <input type="text" class="form-control" id="StartDateTextField"
+                placeholder="" name="startDate" value="<%= surveys.StartDate %>"  required>
               </div>
-             
-             <!-- <% if (title.search("Edit Survey") > -1 ) { %>
-                <button type="submit" id="submitButton" class="btn btn-primary">
-                           <i class="fas fa-edit fa-lg"></i>Edit
-                       </button>
-                       <% } else { %>
-                        <button type="submit" id="submitButton" class="btn btn-primary">
-                           <i class="fas fa-plus-square">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i>Add
-                       </button>
-                        
-                       <% } %> --> -->
+              <div class="form-group">
+                <label for="EndDateTextField">End Date</label>
+                <input type="text" class="form-control" id="EndDateTextField"
+                placeholder="" name="endDate" value="<%= surveys.EndDate %>"  required>
+              </div>
+
               <button type="submit" class="btn btn-primary"><i class="fa fa-check-square-o"></i> Submit</button>
               <a href="/surveys" class="btn btn-warning"><i class="fa fa-undo"></i> Cancel</a>
             </form>
@@ -39,4 +34,5 @@
       </div>
     </div>
 
-<% include ../partials/footer.ejs %>
+
+<%- include ('../partials/footer') %>

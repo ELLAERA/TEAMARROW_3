@@ -1,40 +1,46 @@
-<% include ../partials/header.ejs %>
+ 
+<%- include ('../partials/header') %> 
 
-    <!-- MAIN CONTENT -->
+{<!-- MAIN CONTENT -->
     <div class="container">
       <div class="row">
-        <div class="col-md-offset-1 col-md-10">
-          <h3>Survey List </h3>
-         
-          <a href="/surveys/add" class="btn btn-primary"><i class="fa fa-plus"></i> Add a survey</a>
-          <br>
+        <div class="col-md-offset-1 col-md-20">
+          <h1>Survey List </h1>
+          <br><br><br><br> 
+          <a href="/surveys/add" id="create_btn"><i class="fa fa-plus"></i> Create Survey</a>
+          <br><br>
+          
           <div class="table-responsive">
             <table class="table table-bordered table-striped table-hover">
               <thead>
                 <tr>
-                  <th>Name</th>
-                  <th class="text-center">Description</th>
-                  <th class="text-center">Company</th>
-                  <th class="text-center"></th>
-                  <th class="text-center"></th>
+                  <th>Survey Title</th>
+                  <th class="text-center">Author</th>
+                  <th class="text-center">Start date</th>
+                  <th class="text-center">End date</th>
+                  <th class="text-center">Responses</th>
+                  <th class="text-center"> </th> 
+                  <th class="text-center"> </th> 
                 </tr>
                 </thead>
                 <tbody>
                 <!-- Template Row -->
                 <% for (let count = 0; count < surveys.length; count++) { %>
                 <tr>
-                  <td><%= surveys[count].Name %></td>
-                  <td class="text-center">$<%= surveys[count].Description %></td>
-                  <td class="text-center"><%= surveys[count].Company %></td>
+                  <td><%= surveys[count].Title %></td>
+                  <td class="text-center"><%= surveys[count].Author %></td>
+                  <td class="text-center"><%= surveys[count].StartDate %></td>
+                  <td class="text-center"><%= surveys[count].EndDate %></td>
+                  <td class="text-center">0</td>
                 
 
                   <td class="text-center">
-                    <a href="/surveys/<%= surveys[count]._id %>" class="btn btn-primary btn-sm edit"><i class="fas fa-edit fa-sm"></i> Edit</a> 
-                    
+                    <a href="/surveys/<%= surveys[count]._id %>" id="btns2"> Edit</a> 
+ 
+                    <a href="/surveys/delete/<%= surveys[count]._id %>" id="btns2"> Delete</a>
                   </td>
-
-                  <td class="text-center">
-                    <a href="/surveys/delete/<%= surveys[count]._id %>" class="btn btn-danger btn-sm delete"><i class="fas fa-trash-alt fa-sm"></i> Delete</a>
+                    <td class="text-center">
+                      <a href="" id="btns"> Start Survey</a>
                     
                   </td>
                 </tr>
@@ -48,7 +54,10 @@
         </div>
       </div>
     </div>
+ }
+    <%- include ('../partials/footer') %> 
 
-<% include ../partials/footer.ejs %>
 
 
+
+    

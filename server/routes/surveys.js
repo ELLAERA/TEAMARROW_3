@@ -4,6 +4,7 @@ let router = express.Router();
 let mongoose = require('mongoose');
 
 // define the survey model
+let survey = require('../models/surveys');
 let surveys = require('../models/surveys');
 let Survey = require('../models/surveys');
 
@@ -36,10 +37,10 @@ router.get('/add', (req, res, next) => {
 router.post('/add', (req, res, next) => {
 
   let newSurvey = Survey({
-    "Name": req.body.name,
-    "Description":req.body.description,
-     "Company": req.body.company
-     
+    "Title": req.body.title,
+    "Author":req.body.author,
+    "StartDate": req.body.startDate,
+    "EndDate": req.body.endDate     
     });
 
 
@@ -87,10 +88,10 @@ router.post('/:id', (req, res, next) => {
 
      let updatedSurvey = Survey({
           "_id": id,
-          "Name": req.body.name,
-          "Description":req.body.description,
-          "Company": req.body.company
-         
+          "Title": req.body.title,
+          "Author":req.body.author,
+          "StartDate": req.body.startDate,
+          "EndDate": req.body.endDate     
      });
  
      Survey.updateOne({_id: id}, updatedSurvey, {}, (err) => {
