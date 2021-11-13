@@ -16,7 +16,7 @@
 
   </head>
   <body>
-
+<!-- 
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -29,4 +29,40 @@
           <li><a href="#"></a></li>
         </ul>
       </div>
-    </nav>
+    </nav> -->
+
+
+  <nav class="navbar navbar-danger" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="navbar-header">
+        <a class="navbar-brand"  href="/"><img id="logo" width="250px;" src="/assets/logo.png"></a>
+      </div>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <% if(title == "Home") { %>
+          <li class="active"><a href="/"><i class="fa fa-home fa-lg"></i> Home</a></li>
+        <% } else { %>
+          <li><a href="/"><i class="fa fa-home fa-lg"></i> Home</a></li>
+        <% } %>
+
+          <% if(title == "Survey List") { %>
+          <li class="active"><a href="/surveys"><i class="fa fa-book fa-lg">
+          </i> Books List</a></li>
+          <% } else { %>
+            <li><a href="/surveys"><i class="fa fa-book fa-lg">
+            </i> Survey List</a></li>
+          <% } %>
+
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </nav>
