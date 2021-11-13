@@ -102,7 +102,7 @@ router.post('/:id', (req, res, next) => {
          }
          else
          {
-             // refresh the book list
+             // refresh the survey-list
              res.redirect('/surveys');
          }
      });
