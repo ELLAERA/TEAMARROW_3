@@ -4,24 +4,33 @@ body {
   font-family: 'Rubik', sans-serif;
   }
 
+  nav{
+    height: 100px;
+  } 
+ 
+
+#logo{
+ padding-left: 20px; 
+}
 .container-title {
     text-align: center;
     display: block;
     
   }
   .flex-wrapper, footer {
+    position: fixed;
+    height: 100px;
+    bottom: 0;
+    width: 100%;
     display: flex;
     min-height: 8vh;
+    padding: 10px;
+    text-align: center;
     flex-direction: column;
     justify-content: flex-start;
     height:30px; background:#000; color:#fff;
   }
   
-  .footer {
-    
-    margin-top: auto;
-  }
-
  
 h1 {
   font-size: 46px;
