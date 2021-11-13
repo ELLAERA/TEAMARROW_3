@@ -1,6 +1,6 @@
 /* Custom CSS goes here */
 body {
-  padding-bottom: 70px;
+  padding-bottom: 10px;
   font-family: 'Rubik', sans-serif;
   }
 
@@ -9,15 +9,25 @@ body {
     display: block;
     
   }
-nav.navbar-fixed-bottom, footer{
-  text-align: center;
-}
+  .flex-wrapper, footer {
+    display: flex;
+    min-height: 8vh;
+    flex-direction: column;
+    justify-content: flex-start;
+    height:30px; background:#000; color:#fff;
+  }
+  
+  .footer {
+    
+    margin-top: auto;
+  }
+
  
 h1 {
   font-size: 46px;
 }
 .div_title {
-    padding:200px;
+    padding:150px;
 }
   #big_button {
     display: inline-block;
