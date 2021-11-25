@@ -39,9 +39,11 @@ const signupFunction = async (
     done: (error: any, user?: any, options?: IVerifyOptions) => void) => {
     try {
         //deconstructing
-        const { username, password, FirstName, LastName, email } = req.body;
+        let { username, password, FirstName, LastName, email } = req.body;
         console.log(req.body);
-
+        FirstName = "Rumi1";
+        LastName = "FERDOWSI2";
+        email = "email2@test.com";
         if (!username || !password || !email || !FirstName || !LastName) {
             console.log("Invalid body fields");
             return done(null, false);
@@ -66,7 +68,7 @@ const signupFunction = async (
                 email,
                 displayName: FirstName + " " + LastName
             }
-
+            
             const newUser = new UserModel(userData);
             await newUser.save();
 

@@ -14,7 +14,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
 const mongoose_2 = require("mongoose");
-const bcrypt_1 = __importDefault(require("bcrypt"));
 const UserSchema = new mongoose_2.Schema({
     email: String,
     username: String,
@@ -26,7 +25,7 @@ const UserSchema = new mongoose_2.Schema({
 UserSchema.pre('save', function (next) {
     return __awaiter(this, void 0, void 0, function* () {
         const user = this;
-        const hash = yield bcrypt_1.default.hash(user.password, 10);
+        const hash = this.password;
         this.password = hash;
         next();
     });

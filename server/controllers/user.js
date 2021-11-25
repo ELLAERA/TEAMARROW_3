@@ -30,9 +30,10 @@ function ProcessLoginPage(req, res, next) {
 exports.ProcessLoginPage = ProcessLoginPage;
 function DisplayRegisterPage(req, res, next) {
     if (!req.user) {
-        return res.render('index', { title: 'Register', page: 'auth/register', messages: req.flash('registerMessage'), displayName: (0, utils_1.UserDisplayName)(req) });
+        return res.render('register', { title: 'Register', page: 'register', messages: req.flash('registerMessage'),
+            displayName: (0, utils_1.UserDisplayName)(req) });
     }
-    return res.redirect('/surveys');
+    return res.redirect('/auth/login');
 }
 exports.DisplayRegisterPage = DisplayRegisterPage;
 function ProcessRegisterPage(req, res, next) {
@@ -42,7 +43,8 @@ function ProcessRegisterPage(req, res, next) {
             return next(err);
         }
         if (!user) {
-            return res.render('index', { title: 'Register', page: 'auth/register', messages: req.flash('registerMessage', 'User Already Exists'), displayName: (0, utils_1.UserDisplayName)(req) });
+            return res.render('register', { title: 'Register', page: 'register', messages: req.flash('registerMessage', 'User Already Exists'),
+                displayName: (0, utils_1.UserDisplayName)(req) });
         }
         return res.redirect('/auth/login');
     })(req, res, next);
