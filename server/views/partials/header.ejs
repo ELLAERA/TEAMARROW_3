@@ -54,13 +54,10 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <% if(title=="Home" ) { %>
-          <li class="active"><a href="/"><i class="fa fa-home fa-lg"></i> Home</a></li>
-          <% } else { %>
-            <li><a href="/"><i class="fa fa-home fa-lg"></i> Home</a></li>
-            <% } %>
 
-              <!-- <% if(title == "Survey List") { %>
+        <li><a href="/"><i class="fa fa-home fa-lg"></i> Home</a></li>
+
+        <!-- <% if(title == "Survey List") { %>
           <li class="active"><a href="/surveys"><i class="fa fa-book fa-lg">
           </i> Survey List</a></li>
           <% } else { %>
@@ -68,16 +65,16 @@
             </i> Survey List</a></li>
           <% } %> -->
 
-              <% if(displayName) { %>
-                <li><a href="/surveys"><i class="fa fa-book fa-lg">
-                    </i> Survey List</a></li>
+        <% if(displayName) { %>
+          <li><a href="/surveys"><i class="fa fa-book fa-lg">
+              </i> Survey List</a></li>
 
-                <li><a href="/auth/logout"><i class="fas fa-sign-out-alt fa-lg"></i> LOGOUT</a>
-                </li>
-                <% } else { %>
-                  <li><a href="/auth/login"><i class="fas fa-sign-in-alt fa-lg"></i> LOGIN</a></li>
-                  <li><a href="/auth/register"><i class="fas fa-user-plus fa-lg"></i> Register</a></li>
-                  <% } %>
+          <li><a href="/auth/logout"><i class="fa fa-sign-out fa-lg"></i> LOGOUT</a>
+          </li>
+          <% } else { %>
+            <li><a href="/auth/login"><i class="fa fa-sign-in fa-lg"></i> LOGIN</a></li>
+            <li><a href="/auth/register"><i class="fa fa-user-plus fa-lg"></i> Register</a></li>
+            <% } %>
       </ul>
     </div><!-- /.navbar-collapse -->
   </nav>
