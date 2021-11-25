@@ -117,3 +117,19 @@ $.fn.pageMe = function(opts){
     {pagerSelector:'#myPager',showPrevNext:true,hidePageNumbers:false,perPage:6}
     );
 })();
+
+
+//Student Name: Ferdowsi Rumi
+//Student Number: 301168815
+//Date: OCT 1st, 2021
+// IIFE -- Immediately Invoked Function Expression
+(function(){
+
+    function Start()
+    {
+        console.log("App Started...");
+    }
+
+    window.addEventListener("load", Start);
+
+})();
