@@ -294,11 +294,13 @@ h1 {
 .form-control.success i.fa-check-circle {
   color: #2ecc71;
   visibility: visible;
+  padding-right: 10px;
 }
 
 .form-control.error i.fa-exclamation-circle {
   color: #e74c3c;
   visibility: visible;
+  padding-right: 10px;
 }
 
 .form-control small {
@@ -311,6 +313,8 @@ h1 {
 .form-control.error small {
   color: #e74c3c;
   visibility: visible;
+  padding-left: 15px;
+
 }
 
 .form button {
