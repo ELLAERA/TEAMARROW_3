@@ -8,82 +8,46 @@
             <div class="header">
                 <h2>User Registration</h2>
             </div>
-            <form class="form" id="registerForm" onsubmit="return false;">
+            <form class="form" id="registerForm"  novalidate method="POST" >
+                
                 <div class="form-control">
-                    <label>Firstname</label>
-                    <input type="text" placeholder="rumi17" id="firstname">
+                    <label>username</label>
+                    <input type="text" placeholder="rumi17" id="username" name="username">
                     <i class="fa fa-check-circle"></i>
                     <i class="fa fa-exclamation-circle"></i>
                     <small>Error message</small>
                 </div>
-                <div class="form-control">
-                    <label>Lastname</label>
-                    <input type="text" placeholder="ferdowsi7" id="lastname">
-                    <i class="fa fa-check-circle"></i>
-                    <i class="fa fa-exclamation-circle"></i>
-                    <small>Error message</small>
-                </div>
-                <!-- <div class="form-control ">
-                    <label>Address</label>
-                    <input type="text" placeholder="address" id="address">
-                    <i class="fa fa-check-circle"></i>
-                    <i class="fa fa-exclamation-circle"></i>
-                    <small>Error message</small>
-                </div>
-                <div class="form-control">
-                    <label>City</label>
-                    <input type="text" placeholder="city" id="city">
-                    <i class="fa fa-check-circle"></i>
-                    <i class="fa fa-exclamation-circle"></i>
-                    <small>Error message</small>
-                </div>
-                <div class="form-control ">
-                    <label>Postal Code</label>
-                    <input type="text" placeholder="postal-code" id="postalcode">
-                    <i class="fa fa-check-circle"></i>
-                    <i class="fa fa-exclamation-circle"></i>
-                    <small>Error message</small>
-                </div>
-                <div class="form-control">
-                    <label>Province</label>
-                    <input type="text" list="provinces" placeholder="province" id="province">
-                    <datalist id="provinces">
-            <option value="QC">
-            <option value="ON">
-            <option value="MN">
-            <option value="SK">
-            <option value="AB">
-            <option value="AB">
-          </datalist>
-                    <i class="fa fa-check-circle"></i>
-                    <i class="fa fa-exclamation-circle"></i>
-                    <small>Error message</small>
-                </div>
-                <div class="form-control">
-                    <label>Age</label>
-                    <input type="number" placeholder="age" id="age" min="1">
-                    <i class="fa fa-check-circle"></i>
-                    <i class="fa fa-exclamation-circle"></i>
-                    <small>Error message</small>
-                </div> -->
-
                 <div class="form-control">
                     <label>Password</label>
-                    <input type="password" placeholder="Password" id="password">
+                    <input type="password" placeholder="Password" name="password" id="password">
                     <i class="fa fa-check-circle"></i>
                     <i class="fa fa-exclamation-circle"></i>
                     <small>Error message</small>
                 </div>
                 <div class="form-control">
                     <label>Confirm Password</label>
-                    <input type="password" placeholder="Repeat password" id="password2">
+                    <input type="password" placeholder="Repeat password" id="password2" name ="password2">
+                    <i class="fa fa-check-circle"></i>
+                    <i class="fa fa-exclamation-circle"></i>
+                    <small>Error message</small>
+                </div>
+                <div class="form-control">
+                    <label>First name</label>
+                    <input type="text" placeholder="rumi17" id="firstname">
+                    <i class="fa fa-check-circle"></i>
+                    <i class="fa fa-exclamation-circle"></i>
+                    <small>Error message</small>
+                </div>
+                <div class="form-control">
+                    <label>Last name</label>
+                    <input type="text" placeholder="ferdowsi7" id="lastname">
                     <i class="fa fa-check-circle"></i>
                     <i class="fa fa-exclamation-circle"></i>
                     <small>Error message</small>
                 </div>
                 <div class="form-control">
                     <label>Email</label>
-                    <input type="text" placeholder="hello@email.com" id="email">
+                    <input type="email" placeholder="hello@email.com" id="email" name ="email" >
                     <i class="fa fa-check-circle"></i>
                     <i class="fa fa-exclamation-circle"></i>
                     <small>Error message</small>
@@ -95,7 +59,9 @@
 
                 <div class="submission">
                     <div>
-                        <button id="btnRegisterAccount">Register Account</button>
+                        <button type="submit" id="submit2">Register Account</button>
+                        <!-- <button type="submit" class="btn-login" id="submit">Register</button> -->
+
                     </div>
                     <div>
                         <button id="btnClear">Clear</button>

@@ -38,12 +38,13 @@ const signupFunction = async (
     password: string,
     done: (error: any, user?: any, options?: IVerifyOptions) => void) => {
     try {
+        console.log("signup function called" , req.body);
         //deconstructing
         let { username, password, FirstName, LastName, email } = req.body;
         console.log(req.body);
         FirstName = "Rumi1";
         LastName = "FERDOWSI2";
-        email = "email3@test.com";
+        email = "email3@test.com" + username;
         if (!username || !password || !email || !FirstName || !LastName) {
             console.log("Invalid body fields");
             return done(null, false);

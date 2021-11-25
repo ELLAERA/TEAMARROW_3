@@ -21,7 +21,7 @@
     function setUpPage() {
         start();
         createInputFieldsEventListener();
-        createRegisterAccountEventListener();
+        //createRegisterAccountEventListener();
         createClearFormEventListener();
         setUpFormData();
     }
@@ -34,33 +34,25 @@
                 valid: false
             };
         });
-        //console.log(formFields);
+        console.log(formFields);
     }
 
     function validateInputFields() {
-        let form = document.getElementById("form");
+       // let form = document.getElementById("form");
         let firstname = document.getElementById("firstname");
         let lastname = document.getElementById("lastname");
         let password = document.getElementById("password");
         let password2 = document.getElementById("password2");
-        // let province = document.getElementById("province");
-        // let postalcode = document.getElementById("postalcode");
+    
         let email = document.getElementById("email");
-        // let address = document.getElementById("address");
-        // let city = document.getElementById("city");
-        // let age = document.getElementById("age");
-
+       
         let firstnameValue = firstname.value.trim();
         let lastnameValue = lastname.value.trim();
         let passwordValue = password.value.trim();
         let password2Value = password2.value.trim();
 
         let emailValue = email.value.trim();
-        //     let addressValue = address.value.trim();
-        //     let cityValue = city.value.trim();
-        //     let ageValue = age.value.trim();
-        //  let provinceValue = province.value.trim();
-        //     let postalcodeValue = postalcode.value.trim();
+   
 
         if (firstnameValue === "") {
             setErrorFor(firstname, "firstname cannot be blank");
@@ -78,29 +70,12 @@
             formFields[lastname.id].valid = true;
             setSuccessFor(lastname);
         }
-        // if (addressValue === "") {
-        //     formFields[address.id].valid = false;
-        //     setErrorFor(address, "address cannot be blank");
+     
 
-        // } else {
-        //     formFields[address.id].valid = true;
-        //     setSuccessFor(address);
-        // }
-        // if (cityValue === "") {
-        //     formFields[city.id].valid = false;
-        //     setErrorFor(city, "city cannot be blank");
-        // } else {
-        //     formFields[city.id].valid = true;
-        //     setSuccessFor(city);
-        // }
-
-        emailValidation(emailValue);
-        // proviceValidation(provinceValue);
-        // postalcodeValidation(postalcodeValue);
-        passwordValidation(passwordValue, password2Value);
-        // ageValidation(ageValue);
-
-        // console.log("after validation", formFields);
+       // emailValidation(emailValue);
+     
+       // passwordValidation(passwordValue, password2Value);
+  
     }
 
 
@@ -120,31 +95,6 @@
         }
     }
 
-    function postalcodeValidation(postalcodeValue) {
-        if (postalcodeValue === "") {
-            formFields[postalcode.id].valid = false;
-            setErrorFor(postalcode, "Postal code cannot be blank");
-        } else if (!validatePostalcode(postalcodeValue)) {
-            formFields[postalcode.id].valid = false;
-            setErrorFor(postalcode, " postal code has to be in the a0a0a0 format");
-        } else {
-            formFields[postalcode.id].valid = true;
-            setSuccessFor(postalcode);
-        }
-    }
-
-    function proviceValidation(provinceValue) {
-        if (provinceValue === "") {
-            formFields[province.id].valid = false;
-            setErrorFor(province, "Province cannot be blank");
-        } else if (!validateProvince(provinceValue)) {
-            formFields[province.id].valid = false;
-            setErrorFor(province, "Province is not valid. Should be one of (QC, ON, MN, SK, BC)");
-        } else {
-            formFields[province.id].valid = true;
-            setSuccessFor(province);
-        }
-    }
 
     function passwordValidation(passwordValue, password2Value) {
         if (passwordValue === "") {
@@ -172,20 +122,7 @@
     }
 
 
-    function ageValidation(ageValue) {
-        if (ageValue === "") {
-            formFields[age.id].valid = false;
-            setErrorFor(age, "age cannot be blank");
-
-        } else if (ageValue < 18) {
-            formFields[age.id].valid = false;
-            setErrorFor(age, "you are not eligialbe if your age is under 18");
-        } else {
-            formFields[age.id].valid = true;
-            setSuccessFor(age);
-        }
-    }
-
+    
     function setErrorFor(input, message) {
         const formControl = input.parentElement;
         const small = formControl.querySelector("small");
@@ -206,19 +143,6 @@
         return isEmail;
     }
 
-
-    function validateProvince(provinceValue) {
-        var regEx = /^(ON|QC|MN|SK|AB|BC)$/i;
-        var isProvince = regEx.test(provinceValue);
-        return isProvince;
-    }
-
-    function validatePostalcode(postalcodeValue) {
-        var regEx = /^[A-Z]\d[A-Z]\d[A-Z]\d$/i;
-        var isPostalcode = regEx.test(postalcodeValue);
-        return isPostalcode;
-    }
-
     function validatePassword(passwordValue) {
         var regEx = /^(?=.*\d)(?=.*[A-Z]).{6,}.*$/;
         var isPassword = regEx.test(passwordValue);
@@ -230,32 +154,53 @@
         var isFormValid = true;
 
         var inputs = document.querySelectorAll("#registerForm input");
-        inputs.forEach((element) => {
-            // console.log("Element:,", formFields[element.id]);
-            if (formFields[element.id].valid === false) {
-                isFormValid = false;
-            }
-        });
+        // inputs.forEach((element) => {
+        //     // console.log("Element:,", formFields[element.id]);
+        //     if (formFields[element.id].valid === false) {
+        //         isFormValid = false;
+        //     }
+        // });
 
         return isFormValid;
     }
 
-    function registerAccount() {
+    function  registerAccount() {
         var successResult = document.getElementById("successResult");
         var validationResult = document.getElementById("validationResult");
         var isFormValid = validateForm();
         if (!isFormValid) {
-            validationResult.innerHTML = "Your order can not be submitted. Please check the validation result.";
+            validationResult.innerHTML = "Your form can not be submitted. Please check the input";
             successResult.innerHTML = "";
             validationResult.style.visibility = "visible";
             successResult.style.visibility = "hidden";
         } else {
-            successResult.innerHTML = "Congratulations! Your order is successfully submitted!";
+            successResult.innerHTML = "Congratulations! Your form is successfully submitted!";
             validationResult.innerHTML = "";
             validationResult.style.visibility = "hidden";
             successResult.style.visibility = "visible";
+            console.log("Submitting Form")
+             document.forms['registerForm'].submit();
+           // document.forms['registerForm'].submit();
+             var registerForms= document.querySelector("#registerForm");
+            registerForm.submit();
+
+            // let form = document.getElementById("form");
+            // form.submit();
+            console.log("Form Submitted", registerForms[0].value);
+
         }
+        return false;
     }
+    document.querySelector('#registerForm').addEventListener('submit', function(e) {
+       e.preventDefault();
+        debugger;
+        let x = document.querySelector('#registerForm').elements;
+        console.log("Username: ", x['firstname'].value);
+        console.log("Password: ", x['lastname'].value);
+        let f =  document.getElementById('registerForm');
+        console.log(f);
+        f.submit();
+      });
 
     function createRegisterAccountEventListener() {
         var btnRegisterAccount = document.getElementById("btnRegisterAccount");

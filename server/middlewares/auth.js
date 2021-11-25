@@ -36,11 +36,12 @@ const loginFunction = (req, username, password, done) => __awaiter(void 0, void 
 });
 const signupFunction = (req, username, password, done) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        console.log("signup function called", req.body);
         let { username, password, FirstName, LastName, email } = req.body;
         console.log(req.body);
         FirstName = "Rumi1";
         LastName = "FERDOWSI2";
-        email = "email3@test.com";
+        email = "email3@test.com" + username;
         if (!username || !password || !email || !FirstName || !LastName) {
             console.log("Invalid body fields");
             return done(null, false);
