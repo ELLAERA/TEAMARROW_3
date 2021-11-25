@@ -1,0 +1,46 @@
+<%- include partials/header.ejs %>
+
+    <div class="row mb-5 mt-2 d-flex justify-content-center ">
+        <div class="col-sm-12 d-flex justify-content-center" style="padding:60px 0">
+
+            <% if(messages.length> 0) { %>
+                <div id="messageArea" class="alert alert-danger">
+                    <%= messages %>
+                </div>
+                <% } %>
+            <form class="login-form" nonvalidate method="POST">
+                <div class="inputs">
+                    <label for="email" class="inputWrapper">
+                        <i class="fas fa-user"></i>
+                        <span></span>
+                        <input placeholder="Enter username:" type="text" name="username" id="email">
+                    </label>
+                    <p id="emailError" class="errorMessage"></p>
+
+                    <label for="password" class="inputWrapper">
+                        <i class="fas fa-unlock-alt"></i>
+                        <span></span>
+                        <input placeholder="Enter password" type="password" name="password" id="password">
+                    </label>
+                    <p id="passwordError" class="errorMessage"></p>
+                </div>
+
+                <div class="other">
+                    <div class="rMe">
+                        <input type="checkbox">Remember me
+                    </div>
+                    <a id="forgotPwd" href="#">Forgot Password?</a>
+                </div>
+                <div style="text-align:center;">
+                    <button type="submit" class="btn-login" id="submit">Log in</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+
+    <%- include partials/footer.ejs %>

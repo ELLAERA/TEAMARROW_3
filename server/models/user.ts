@@ -29,6 +29,7 @@ UserSchema.methods.isValidPassword = async function (password: string) {
 declare global {
     export type UserDocument = mongoose.Document & {
         _id: String,
+        email: String,
         username: String,
         password: String,
         displayName: String

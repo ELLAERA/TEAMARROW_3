@@ -46,6 +46,7 @@ const StoreOptions = {
 };
 const index_1 = __importDefault(require("../routes/index"));
 const surveys_1 = __importDefault(require("../routes/surveys"));
+const users_1 = __importDefault(require("../routes/users"));
 const utils_1 = require("../utils");
 console.log("remoete uri", DBConfig.RemoteURI);
 mongoose_1.default.connect((DBConfig.RemoteURI) ? DBConfig.RemoteURI : DBConfig.LocalURI);
@@ -68,6 +69,7 @@ app.use(passport_1.default.initialize());
 app.use(passport_1.default.session());
 app.use('/', index_1.default);
 app.use('/surveys', surveys_1.default);
+app.use('/auth', users_1.default);
 app.use(function (req, res, next) {
     next((0, http_errors_1.default)(404));
 });

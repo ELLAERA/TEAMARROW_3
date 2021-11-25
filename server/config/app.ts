@@ -32,6 +32,7 @@ const StoreOptions = {
 
 import indexRouter from '../routes/index';
 import surveyRouter from '../routes/surveys';
+import userRouter from '../routes/users';
 
 // import userRouter from '../routes/users';
 // let surveys = require('../routes/surveys'); // routes for surveys
@@ -78,6 +79,7 @@ app.use(passport.session());
 // route redirects
 app.use('/', indexRouter);
 app.use('/surveys', surveyRouter);
+app.use('/auth', userRouter);
 
 
 // catch 404 and forward to error handler
