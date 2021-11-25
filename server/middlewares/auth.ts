@@ -43,7 +43,7 @@ const signupFunction = async (
         console.log(req.body);
         FirstName = "Rumi1";
         LastName = "FERDOWSI2";
-        email = "email2@test.com";
+        email = "email3@test.com";
         if (!username || !password || !email || !FirstName || !LastName) {
             console.log("Invalid body fields");
             return done(null, false);
@@ -75,6 +75,7 @@ const signupFunction = async (
             return done(null, newUser)
         }
     } catch (err) {
+
         done(err);
     }
 };

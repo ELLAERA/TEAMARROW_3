@@ -40,7 +40,7 @@ const signupFunction = (req, username, password, done) => __awaiter(void 0, void
         console.log(req.body);
         FirstName = "Rumi1";
         LastName = "FERDOWSI2";
-        email = "email2@test.com";
+        email = "email3@test.com";
         if (!username || !password || !email || !FirstName || !LastName) {
             console.log("Invalid body fields");
             return done(null, false);
