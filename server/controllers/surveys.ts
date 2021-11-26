@@ -46,10 +46,10 @@ export function ProcessEditPage(req: express.Request, res: express.Response, nex
     let id = req.params.id;
     let updatedSurvey = new Survey({
         "_id": id,
-        "Title": req.body.title,
-        "Author": req.body.author,
-        "StartDate": req.body.startDate,
-        "EndDate": req.body.endDate
+        "Title": req.body.Title,
+        "Author": req.body.Author,
+        "StartDate": req.body.StartDate,
+        "EndDate": req.body.EndDate
     });
 
     Survey.updateOne({ _id: id }, updatedSurvey, {}, (err) => {
@@ -67,11 +67,12 @@ export function ProcessAddPage(req: express.Request, res: express.Response, next
 
   
     let newSurvey = new Survey({
-        "Title": req.body.title,
-        "Author": req.body.author,
-        "StartDate": req.body.startDate,
-        "EndDate": req.body.endDate
+        "Title": req.body.Title,
+        "Author": req.body.Author,
+        "StartDate": req.body.StartDate,
+        "EndDate": req.body.EndDate
     });
+    console.log("New Survey" , newSurvey);
     Survey.create(newSurvey, (err: HttpError) => {
         if (err) {
             console.error(err);

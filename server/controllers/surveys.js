@@ -37,10 +37,10 @@ function ProcessEditPage(req, res, next) {
     let id = req.params.id;
     let updatedSurvey = new surveys_1.default({
         "_id": id,
-        "Title": req.body.title,
-        "Author": req.body.author,
-        "StartDate": req.body.startDate,
-        "EndDate": req.body.endDate
+        "Title": req.body.Title,
+        "Author": req.body.Author,
+        "StartDate": req.body.StartDate,
+        "EndDate": req.body.EndDate
     });
     surveys_1.default.updateOne({ _id: id }, updatedSurvey, {}, (err) => {
         if (err) {
@@ -53,11 +53,12 @@ function ProcessEditPage(req, res, next) {
 exports.ProcessEditPage = ProcessEditPage;
 function ProcessAddPage(req, res, next) {
     let newSurvey = new surveys_1.default({
-        "Title": req.body.title,
-        "Author": req.body.author,
-        "StartDate": req.body.startDate,
-        "EndDate": req.body.endDate
+        "Title": req.body.Title,
+        "Author": req.body.Author,
+        "StartDate": req.body.StartDate,
+        "EndDate": req.body.EndDate
     });
+    console.log("New Survey", newSurvey);
     surveys_1.default.create(newSurvey, (err) => {
         if (err) {
             console.error(err);
