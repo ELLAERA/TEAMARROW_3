@@ -9,10 +9,6 @@
         console.log("App Started...");
     }
 
-
-    // author: Ferdowsi Rumi 301168815
-    // assignment 4: Form validation
-
     window.addEventListener("load", setUpPage, false);
 
     let formFields = [];
@@ -21,7 +17,7 @@
     function setUpPage() {
         start();
         createInputFieldsEventListener();
-        //createRegisterAccountEventListener();
+      //  createRegisterAccountEventListener();
         createClearFormEventListener();
         setUpFormData();
     }
@@ -39,23 +35,32 @@
 
     function validateInputFields() {
        // let form = document.getElementById("form");
+       let username = document.getElementById("username");
+
         let firstname = document.getElementById("firstname");
         let lastname = document.getElementById("lastname");
         let password = document.getElementById("password");
         let password2 = document.getElementById("password2");
     
         let email = document.getElementById("email");
-       
+        let usernameValue = username.value.trim();
+
         let firstnameValue = firstname.value.trim();
         let lastnameValue = lastname.value.trim();
         let passwordValue = password.value.trim();
         let password2Value = password2.value.trim();
 
         let emailValue = email.value.trim();
-   
+        if (usernameValue === "") {
+            setErrorFor(username, "username cannot be blank");
+            formFields[username.id].valid = false;
+        } else {
+            formFields[username.id].valid = true;
+            setSuccessFor(username);
+        }
 
         if (firstnameValue === "") {
-            setErrorFor(firstname, "firstname cannot be blank");
+            setErrorFor(firstname, "first name cannot be blank");
             formFields[firstname.id].valid = false;
         } else {
             formFields[firstname.id].valid = true;
@@ -64,18 +69,16 @@
 
         if (lastnameValue === "") {
             formFields[lastname.id].valid = false;
-            setErrorFor(lastname, "lastname cannot be blank");
+            setErrorFor(lastname, "last name cannot be blank");
 
         } else {
             formFields[lastname.id].valid = true;
             setSuccessFor(lastname);
         }
-     
 
-       // emailValidation(emailValue);
+        emailValidation(emailValue);
      
-       // passwordValidation(passwordValue, password2Value);
-  
+        passwordValidation(passwordValue, password2Value);
     }
 
 
@@ -154,17 +157,18 @@
         var isFormValid = true;
 
         var inputs = document.querySelectorAll("#registerForm input");
-        // inputs.forEach((element) => {
-        //     // console.log("Element:,", formFields[element.id]);
-        //     if (formFields[element.id].valid === false) {
-        //         isFormValid = false;
-        //     }
-        // });
+        inputs.forEach((element) => {
+            // console.log("Element:,", formFields[element.id]);
+            if (formFields[element.id].valid === false) {
+                isFormValid = false;
+            }
+        });
 
         return isFormValid;
     }
 
     function  registerAccount() {
+       // e.preventDefault();
         var successResult = document.getElementById("successResult");
         var validationResult = document.getElementById("validationResult");
         var isFormValid = validateForm();
@@ -179,11 +183,11 @@
             validationResult.style.visibility = "hidden";
             successResult.style.visibility = "visible";
             console.log("Submitting Form")
-             document.forms['registerForm'].submit();
+           //  document.forms['registerForm'].submit();
            // document.forms['registerForm'].submit();
-             var registerForms= document.querySelector("#registerForm");
-            registerForm.submit();
-
+          let f= document.getElementById('registerForm');
+             console.log(f);
+            f.submit();
             // let form = document.getElementById("form");
             // form.submit();
             console.log("Form Submitted", registerForms[0].value);
@@ -192,20 +196,21 @@
         return false;
     }
     document.querySelector('#registerForm').addEventListener('submit', function(e) {
-       e.preventDefault();
-        debugger;
+        e.preventDefault();
         let x = document.querySelector('#registerForm').elements;
-        console.log("Username: ", x['firstname'].value);
-        console.log("Password: ", x['lastname'].value);
+        console.log("Username: ", x['username'].value);
+        console.log("Password: ", x['password'].value);
         let f =  document.getElementById('registerForm');
         console.log(f);
-        f.submit();
+       // f.submit();
+        registerAccount();
+
       });
 
     function createRegisterAccountEventListener() {
         var btnRegisterAccount = document.getElementById("btnRegisterAccount");
         if (btnRegisterAccount.addEventListener) {
-            btnRegisterAccount.addEventListener("click", registerAccount, false);
+            btnRegisterAccount.addEventListener("click", registerAccount, true);
         } else if (btnRegisterAccount.attachEvent) {
             btnRegisterAccount.attachEvent("onclick", registerAccount);
         }
