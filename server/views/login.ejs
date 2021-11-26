@@ -1,47 +1,138 @@
 <%- include partials/header.ejs %>
-<div class="container">
 
-    <div class="row mb-5 mt-2 d-flex justify-content-center ">
-        <div class="col-sm-12 d-flex justify-content-center" style="padding:60px 0">
+    <div class="container1">
 
-            <% if(messages.length> 0) { %>
-                <div id="messageArea" class="alert alert-danger">
-                    <%= messages %>
+        <!-- begin section availability  -->
+        <section id="login" class="section-gray" style="background-color:#ced4da;">
+
+            <div class="form-container" id="loginuser">
+                <div class="header">
+                    <h2>User Login</h2>
                 </div>
-                <% } %>
-            <form class="login-form" nonvalidate method="POST">
-                <div class="inputs">
-                    <label for="email" class="inputWrapper">
-                        <i class="fa fa-user"></i>
-                        <span></span>
-                        <input placeholder="Enter username:" type="text" name="username" id="email">
-                    </label>
-                    <p id="emailError" class="errorMessage"></p>
+                <form class="form" id="loginForm" novalidate method="POST">
 
-                    <label for="password" class="inputWrapper">
-                        <i class="fa fa-unlock-alt"></i>
-                        <span></span>
-                        <input placeholder="Enter password" type="password" name="password" id="password">
-                    </label>
-                    <p id="passwordError" class="errorMessage"></p>
-                </div>
-
-                <div class="other">
-                    <div class="rMe">
-                        <input type="checkbox">Remember me
+                    <div class="form-control">
+                        <label>username</label>
+                        <input type="text" placeholder="rumi17" id="username" name="username">
+                        <i class="fa fa-check-circle"></i>
+                        <i class="fa fa-exclamation-circle"></i>
+                        <small>Error message</small>
                     </div>
-                    <a id="forgotPwd" href="#">Forgot Password?</a>
+                    <div class="form-control">
+                        <label>Password</label>
+                        <input type="password" placeholder="Password" name="password" id="password">
+                        <i class="fa fa-check-circle"></i>
+                        <i class="fa fa-exclamation-circle"></i>
+                        <small>Error message</small>
+                    </div>
+                    <div>
+                        <p class="validationError" style="visibility: hidden;" id="validationResult"> </p>
+                        <% if(messages.length> 0) { %>
+                            <div id="messageArea" class="validationError">
+                                <%= messages %>
+                            </div>
+                            <% } %>
+                                <p class="validationSuccess" style="visibility: hidden;" id="successResult"> </p>
+                    </div>
+
+
+                    <div class="submission">
+                        <div>
+                            <button type="submit" id="btnlogin">Login</button>
+                            <!-- <button type="submit" class="btn-login" id="submit">Register</button> -->
+
+                        </div>
+                        <div>
+                            <button id="btnClear">Clear</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+
+        <!-- <div class="row mb-5 mt-2 d-flex justify-content-center ">
+    <div class="col-sm-12 d-flex justify-content-center" style="padding:60px 0">
+
+        <% if(messages.length> 0) { %>
+            <div id="messageArea" class="alert alert-danger">
+                <%= messages %>
+            </div>
+            <% } %>
+        <form class="login-form" nonvalidate method="POST">
+            <div class="inputs">
+                <label for="email" class="inputWrapper">
+                    <i class="fa fa-user"></i>
+                    <span></span>
+                    <input placeholder="Enter username:" type="text" name="username" id="email">
+                </label>
+                <p id="emailError" class="errorMessage"></p>
+
+                <label for="password" class="inputWrapper">
+                    <i class="fa fa-unlock-alt"></i>
+                    <span></span>
+                    <input placeholder="Enter password" type="password" name="password" id="password">
+                </label>
+                <p id="passwordError" class="errorMessage"></p>
+            </div>
+
+            <div class="other">
+                <div class="rMe">
+                    <input type="checkbox">Remember me
                 </div>
-                <div style="text-align:center;">
-                    <button type="submit" class="btn-login" id="submit">Log in</button>
-                </div>
-            </form>
-        </div>
+                <a id="forgotPwd" href="#">Forgot Password?</a>
+            </div>
+            <div style="text-align:center;">
+                <button type="submit" class="btn-login" id="submit">Register</button>
+            </div>
+        </form>
+    </div>
+</div> -->
+
     </div>
 
-</div>
 
+    <script type="text/javascript" src="/Scripts/loginuser.js"></script>
 
+    <!-- <div class="container">
 
+        <div class="row mb-5 mt-2 d-flex justify-content-center ">
+            <div class="col-sm-12 d-flex justify-content-center" style="padding:60px 0">
 
+                <% if(messages.length> 0) { %>
+                    <div id="messageArea" class="alert alert-danger">
+                        <%= messages %>
+                    </div>
+                    <% } %>
+                        <form class="login-form" nonvalidate method="POST">
+                            <div class="inputs">
+                                <label for="email" class="inputWrapper">
+                                    <i class="fa fa-user"></i>
+                                    <span></span>
+                                    <input placeholder="Enter username:" type="text" name="username" id="email">
+                                </label>
+                                <p id="emailError" class="errorMessage"></p>
+
+                                <label for="password" class="inputWrapper">
+                                    <i class="fa fa-unlock-alt"></i>
+                                    <span></span>
+                                    <input placeholder="Enter password" type="password" name="password" id="password">
+                                </label>
+                                <p id="passwordError" class="errorMessage"></p>
+                            </div>
+
+                            <div class="other">
+                                <div class="rMe">
+                                    <input type="checkbox">Remember me
+                                </div>
+                                <a id="forgotPwd" href="#">Forgot Password?</a>
+                            </div>
+                            <div style="text-align:center;">
+                                <button type="submit" class="btn-login" id="submit">Log in</button>
+                            </div>
+                        </form>
+            </div>
+        </div>
+
+    </div> -->
     <%- include partials/footer.ejs %>
