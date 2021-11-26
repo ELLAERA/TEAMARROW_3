@@ -55,6 +55,36 @@ h1 {
     cursor: pointer;
     margin: 50px;
   }
+
+  #homeLogin {
+    display: inline-block;
+    border-radius: 8px;
+    background-color:#FF4742;
+    border: none; 
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 22px;
+    padding: 25px;
+    width: 320px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 50px;
+  }
+
+  #homeRegister {
+    display: inline-block;
+    border-radius: 8px;
+    background-color:#219ebc;
+    border: none; 
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 22px;
+    padding: 25px;
+    width: 320px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 50px;
+  }
   
   #big_button span {
     cursor: pointer;
