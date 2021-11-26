@@ -1,7 +1,3 @@
-
-//Student Name: Ferdowsi Rumi
-//Student Number: 301168815
-//Date: OCT 1st, 2021
 import { Router } from "express";
 import { DisplayLoginPage, DisplayRegisterPage, ProcessLoginPage, ProcessLogout, ProcessRegisterPage } from "../controllers/user";
 

@@ -18,19 +18,15 @@ function DisplayListPage(req, res, next) {
 exports.DisplayListPage = DisplayListPage;
 function DisplayEditPage(req, res, next) {
     let id = req.params.id;
-    if (id != 'favicon.ico')
-        surveys_1.default.findById(id, {}, {}, (err, surveysToEdit) => {
-            if (err) {
-                console.error(err);
-                res.end(err);
-            }
-            ;
-            if (surveysToEdit !== undefined) {
-                console.log("Edit Survey", surveysToEdit);
-                res.render('surveys/details', { title: "Edit Survey", page: "surveys/details", surveys: surveysToEdit,
-                    displayName: (0, utils_1.UserDisplayName)(req) });
-            }
-        });
+    surveys_1.default.findById(id, {}, {}, (err, surveysToEdit) => {
+        if (err) {
+            console.error(err);
+            res.end(err);
+        }
+        ;
+        console.log(surveysToEdit);
+        res.render('surveys/details', { title: "Edit Survey", page: "surveys/details", item: surveysToEdit, displayName: (0, utils_1.UserDisplayName)(req) });
+    });
 }
 exports.DisplayEditPage = DisplayEditPage;
 function DisplayAddPage(req, res, next) {
@@ -49,7 +45,6 @@ function ProcessEditPage(req, res, next) {
     surveys_1.default.updateOne({ _id: id }, updatedSurvey, {}, (err) => {
         if (err) {
             console.error(err);
-            res.redirect('/surveys');
             res.end(err);
         }
         res.redirect('/surveys');

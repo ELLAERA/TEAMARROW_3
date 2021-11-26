@@ -7,27 +7,31 @@
             <form class="form" method="post">
               <div class="form-group">
                 <label for="NameTextField">Survey Title</label>
-                <input type="text" class="form-control" id=""
+                <input type="text" class="form-control1" id="titleField"
                 placeholder="" name="title" value="<%= surveys.Title %>" required>
               </div>
               <div class="form-group">
                 <label for="AuthorTextField">Author</label>
-                <input type="text" class="form-control" id="AuthorTextField"
+                <input type="text" class="form-control1" id="AuthorTextField"
                 placeholder="" name="author" value="<%= surveys.Author %>"  required>
               </div>
               <div class="form-group">
                 <label for="StartDateTextField">Start Date</label>
-                <input type="text" class="form-control" id="StartDateTextField"
+                <input type="text" class="form-control1" id="StartDateTextField"
                 placeholder="" name="startDate" value="<%= surveys.StartDate %>"  required>
               </div>
-              <div class="form-group">
+              <div class="form-group" >
                 <label for="EndDateTextField">End Date</label>
-                <input type="text" class="form-control" id="EndDateTextField"
+                <input type="text" class="form-control1"  id="EndDateTextField"
                 placeholder="" name="endDate" value="<%= surveys.EndDate %>"  required>
               </div>
 
-              <button type="submit" class="btn btn-primary"><i class="fa fa-check-square-o"></i> Submit</button>
-              <a href="/surveys" class="btn btn-warning"><i class="fa fa-undo"></i> Cancel</a>
+              <br>
+              <a href="" id="btns3"><i class="fa fa-plus"></i>&nbsp;Add question</a>
+              <a href="/surveys" id="btns3"><i class="fa fa-undo"></i>&nbsp;Cancel</a>
+              <br><br>
+              <button type="submit" class="btn btn-primary" id="detailPageSubmitBtn"><i class="fa fa-check-square-o"></i> Submit</button>
+              
 
               <br>
               <br><br><br><br><br><br><br><br>
