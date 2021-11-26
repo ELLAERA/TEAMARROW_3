@@ -355,7 +355,7 @@ h1 {
 }
 
 ::placeholder {
-  font-size: 11px;
-  color: dimgrey;
+  font-size: 10px;
+  color: rgb(150, 150, 150);
 }
 

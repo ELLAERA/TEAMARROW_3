@@ -122,6 +122,7 @@
           let f= document.getElementById('loginForm');
              console.log(f);
             f.submit();
+            successResult.innerHTML = "An user with provided details is not in the system";
             // let form = document.getElementById("form");
             // form.submit();
         }
