@@ -4,7 +4,7 @@ import { isLoggedIn } from '../middlewares/auth';
 
 const router = express.Router();
 
-router.get('/list', DisplayListPage);
+router.get('/', DisplayListPage);
 
 router.get('/add', DisplayAddPage);
 
