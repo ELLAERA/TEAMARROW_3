@@ -30,7 +30,7 @@ function DisplayEditPage(req, res, next) {
 }
 exports.DisplayEditPage = DisplayEditPage;
 function DisplayAddPage(req, res, next) {
-    res.render('surveys/details', { title: 'Add Survey', page: 'surveys/details', surveys: '', displayName: (0, utils_1.UserDisplayName)(req) });
+    res.render('surveys/details', { title: 'Add Survey', page: 'surveys/details', item: '', displayName: (0, utils_1.UserDisplayName)(req) });
 }
 exports.DisplayAddPage = DisplayAddPage;
 function ProcessEditPage(req, res, next) {

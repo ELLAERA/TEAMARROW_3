@@ -38,7 +38,7 @@ export function DisplayEditPage(req: express.Request, res: express.Response, nex
 // Display (C)reate page
 export function DisplayAddPage(req: express.Request, res: express.Response, next: express.NextFunction) {
     // show the add view
-    res.render('surveys/details', { title: 'Add Survey', page: 'surveys/details', surveys: '', displayName: UserDisplayName(req) });
+    res.render('surveys/details', { title: 'Add Survey', page: 'surveys/details', item: '', displayName: UserDisplayName(req) });
 }
 
 // Process (E)dit page
