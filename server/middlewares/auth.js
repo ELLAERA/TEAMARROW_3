@@ -23,7 +23,6 @@ const strategyOptions = {
     passReqToCallback: true
 };
 const loginFunction = (req, username, password, done) => __awaiter(void 0, void 0, void 0, function* () {
-    debugger;
     const user = yield user_1.default.findOne({ username });
     if (!user) {
         return done(null, false, { message: "User does not exist" });
@@ -37,14 +36,11 @@ const loginFunction = (req, username, password, done) => __awaiter(void 0, void 
 const signupFunction = (req, username, password, done) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         console.log("signup function called", req.body);
-        let { username, password, FirstName, LastName, email } = req.body;
+        let { username, password, password2, firstname, lastname, email } = req.body;
         console.log(req.body);
-        FirstName = "Rumi1";
-        LastName = "FERDOWSI2";
-        email = "email3@test.com" + username;
-        if (!username || !password || !email || !FirstName || !LastName) {
+        if (!username || !password || !email) {
             console.log("Invalid body fields");
-            return done(null, false);
+            return done(null, false, { message: "User details are not well formed" });
         }
         const query = {
             $or: [{ username: username }, { email: email }]
@@ -54,14 +50,14 @@ const signupFunction = (req, username, password, done) => __awaiter(void 0, void
         if (user) {
             console.log('User already exists');
             console.log(user);
-            return done(null, false);
+            return done(null, false, { message: "User already exists" });
         }
         else {
             const userData = {
                 username,
                 password,
                 email,
-                displayName: FirstName + " " + LastName
+                displayName: firstname + " " + lastname
             };
             const newUser = new user_1.default(userData);
             yield newUser.save();

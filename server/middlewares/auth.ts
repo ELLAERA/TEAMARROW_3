@@ -17,7 +17,6 @@ const loginFunction: any = async (
     username: string,
     password: string,
     done: (error: any, user?: any, options?: IVerifyOptions) => void) => {
-    debugger;
     const user: any = await UserModel.findOne({ username });
 
     if (!user) {
@@ -40,14 +39,15 @@ const signupFunction = async (
     try {
         console.log("signup function called" , req.body);
         //deconstructing
-        let { username, password, FirstName, LastName, email } = req.body;
+        let { username, password, password2, firstname, lastname, email } = req.body;
         console.log(req.body);
-        FirstName = "Rumi1";
-        LastName = "FERDOWSI2";
-        email = "email3@test.com" + username;
-        if (!username || !password || !email || !FirstName || !LastName) {
+        // FirstName = "Rumi1";
+        // LastName = "FERDOWSI2";
+        // email = "email3@test.com" + username;
+        if (!username || !password || !email) {
             console.log("Invalid body fields");
-            return done(null, false);
+           // return done(null, false);
+           return done(null, false, { message: "User details are not well formed" });
         }
 
         const query = {
@@ -61,13 +61,13 @@ const signupFunction = async (
         if (user) {
             console.log('User already exists');
             console.log(user);
-            return done(null, false);
+            return done(null, false, { message: "User already exists" });
         } else {
             const userData = {
                 username,
                 password,
                 email,
-                displayName: FirstName + " " + LastName
+                displayName: firstname + " " + lastname
             }
             
             const newUser = new UserModel(userData);
