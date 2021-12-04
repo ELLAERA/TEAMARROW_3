@@ -23,13 +23,14 @@ window.onload = function() {
     questionInput.setAttribute("id", "questionInput");
     questionInput.setAttribute("class", "form-control1");
     questionInput.setAttribute("placeholder", "Enter Question");
+    delBtn.setAttribute("onclick", "this.parentNode.remove();");
     questionInput.setAttribute("type", "text");
     delBtn.setAttribute("id", "btns4");
     selectOption1.text = "Short Answer";
     selectOption2.text = "Agree/Disagree"; 
     selectBtn.setAttribute("id", "btns4");
-    newDiv.setAttribute("class", "newDiv");
- 
+    newDiv.setAttribute("class", "newDiv"); 
+
     
     questionHere.appendChild(newDiv);
     newDiv.appendChild(label);
