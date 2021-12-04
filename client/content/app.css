@@ -214,22 +214,28 @@ h1 {
   transform: translateY(0);
 }
 
+#addQustionBtn{
+ width: 70%;
+}
 
+#btns3{
+  width: 29%;
+ }
 
-#btns3,  #addQustionBtn {
+#btns3,  #addQustionBtn { 
   align-items: center;
   background-color: #FFFFFF;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: .25rem;
   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
   box-sizing: border-box;
-  color: rgba(0, 0, 0, 0.85);
+  color: #FF4742;
   cursor: pointer;
   display: inline-flex; 
   font-size: 18px;
   font-weight: 500;
   justify-content: center;
-  line-height: 1.25;
+  line-height: 2.5; 
   margin: 0;
   min-height: 3rem;
   padding: calc(.875rem - 1px) calc(1.5rem - 1px);
@@ -239,8 +245,7 @@ h1 {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  vertical-align: baseline;
-  width:49%;
+  vertical-align: baseline; 
 }
 
 
@@ -248,7 +253,7 @@ h1 {
 #btns3:focus, #addQustionBtn:focus {
   border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-  color: rgba(0, 0, 0, 0.65);
+  color: #FF4742;
 }
 
 #btns3:hover,  #addQustionBtn:hover {
@@ -259,9 +264,39 @@ h1 {
   background-color: #F0F0F1;
   border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
-  color: rgba(0, 0, 0, 0.65);
+  color: #FF4742;
   transform: translateY(0);
 }
+
+
+
+#btns4 {
+  align-items: center;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  display: inline-flex; 
+  font-size: 16px;
+  font-weight: 500;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 4rem;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline; 
+}
+
+ 
 
 #create_btn{ 
   background: #FF4742;
@@ -455,10 +490,21 @@ h1 {
 }
 
 
-#questionHere {
-  visibility: visible;
+#questionInput, #questionInput::-webkit-input-placeholder { 
+  font-size: 16px;
+  line-height: 300%;
+  margin-top:5px;
+  margin-bottom:5px; 
 }
- 
-#questionInput {
-  font-size: 20px;
+
+.newDiv{ 
+  border-radius: 6px;
+  background-color:rgba(228, 233, 235, 0.726);
+  margin-top: 20px;
+  margin-bottom: 30px; 
+  padding: 20px;
+  padding-bottom: 30px;
 }
+ #questionHere{
+   margin-bottom: 40px;
+ }
