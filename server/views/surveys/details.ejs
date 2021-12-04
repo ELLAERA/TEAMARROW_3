@@ -27,10 +27,14 @@
               </div>
 
               <br>
-              <a href="" id="btns3"><i class="fa fa-plus"></i>&nbsp;Add question</a>
+
+              <% include ../surveys/form.ejs %>
+
+              <div></div>
+              <a href="" id="addQustionBtn"><i class="fa fa-plus"></i>&nbsp;Add question</a>
               <a href="/surveys" id="btns3"><i class="fa fa-undo"></i>&nbsp;Cancel</a>
               <br><br>
-              <button type="submit" class="btn btn-primary" id="detailPageSubmitBtn"><i class="fa fa-check-square-o"></i> Submit</button>
+              <button type="submit" cbtnlass="btn btn-primary" id="detailPageSubmitBtn"><i class="fa fa-check-square-o"></i> Submit</button>
               
 
               <br>
@@ -39,6 +43,8 @@
         </div>
       </div>
     </div>
+
+    <script type="text/javascript" src="/Scripts/createsurvey.js"></script>
 
 
     <% include ../partials/footer.ejs %>
