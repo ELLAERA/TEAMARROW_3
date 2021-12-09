@@ -2,23 +2,23 @@
 <!-- MAIN CONTENT --> 
 <div class="container">
   <div class="row">
-    <div class="col-md-offset-1 col-md-20">
-  
-
-<h1>Take Survey </h1> 
-<br><br><br><br>
-<p id="qustions-p"><%= item.Question1 %></p>
-<input name="answer1"class="form-control2" width="500px" type="text" required>
-<br><br>
-<p id="qustions-p"><%= item.Question2 %></p>
-<input name="answer2"class="form-control2" type="text" required>
-<br><br>
-<p id="qustions-p"><%= item.Question3 %></p>
-<input name="answer3" class="form-control2" type="text" required>
-<br><br>
-<button type="submit" class="btn btn-primary" id="detailPageSubmitBtn"><i class="fa fa-check-square-o"></i> Submit</button>
-</div> 
+    <div class="col-md-offset-1 col-md-20"> 
+      <h1>Take Survey </h1><br>
+      <form class="form" method="post">
+        <h2> <%= item.Title %></h2><br>
+      <p id="qustions-p"><%= item.Question1 %></p>
+      <input name="answer1" value="<%= item.answer1 %>" class="form-control2" width="500px" type="text" required>
+      <br><br>
+      <p id="qustions-p"><%= item.Question2 %></p>
+      <input name="answer2" value="<%= item.answer2 %>" class="form-control2" type="text" required>
+      <br><br>
+      <p id="qustions-p"><%= item.Question3 %></p>
+      <input name="answer3" value="<%= item.answer3 %>" class="form-control2" type="text" required>
+      <br><br>
+      <button type="submit" class="btn btn-primary" id="answerPageSubmitBtn"><i class="fa fa-check-square-o"></i> Submit</button>
+      </form>
+  </div> 
+  </div>
 </div>
-</div>
-
+<script type="text/javascript" src="/Scripts/answer.js"></script>
 <% include ../partials/footer.ejs %>

@@ -3,8 +3,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DisplayAnswerPage = exports.ProcessDeletePage = exports.ProcessAddPage = exports.ProcessEditPage = exports.DisplayEditPage = exports.DisplayAddPage = exports.DisplayListPage = void 0;
+exports.ProcessAnswerPage = exports.DisplayAnswerPage = exports.ProcessDeletePage = exports.ProcessAddPage = exports.ProcessEditPage = exports.DisplayEditPage = exports.DisplayAddPage = exports.DisplayListPage = void 0;
 const surveys_1 = __importDefault(require("../models/surveys"));
+const answers_1 = __importDefault(require("../models/answers"));
 const utils_1 = require("../utils");
 function DisplayListPage(req, res, next) {
     surveys_1.default.find(function (err, surveys) {
@@ -99,4 +100,21 @@ function DisplayAnswerPage(req, res, next) {
     });
 }
 exports.DisplayAnswerPage = DisplayAnswerPage;
+function ProcessAnswerPage(req, res, next) {
+    let newAnswer = new answers_1.default({
+        "Answer1": req.body.Answer1,
+        "Answer2": req.body.Answer2,
+        "Answer3": req.body.Answer3
+    });
+    console.log("New Survey", newAnswer);
+    answers_1.default.create(newAnswer, (err) => {
+        if (err) {
+            console.error(err);
+            res.end(err);
+        }
+        ;
+        res.redirect('/surveys');
+    });
+}
+exports.ProcessAnswerPage = ProcessAnswerPage;
 //# sourceMappingURL=surveys.js.map

@@ -2,6 +2,7 @@ import express from 'express';
 import { HttpError } from 'http-errors';  
 
 import Survey from '../models/surveys';
+import Answer from '../models/answers';
 import { UserDisplayName } from '../utils';
 
 //(R)ead in CRUD
@@ -119,4 +120,23 @@ export function DisplayAnswerPage(req: express.Request, res: express.Response, n
       console.log(surveysToTake);
       res.render('surveys/answer', { title: "Take Survey", page: "surveys/answer", item: surveysToTake, displayName: UserDisplayName(req) })
   })
+}
+
+export function ProcessAnswerPage(req: express.Request, res: express.Response, next: express.NextFunction) {
+
+  let newAnswer = new Answer({ 
+    "Answer1": req.body.Answer1,
+    "Answer2": req.body.Answer2,
+    "Answer3": req.body.Answer3
+    
+  });
+  console.log("New Survey" , newAnswer);
+  Answer.create(newAnswer, (err: HttpError) => {
+    if (err) {
+        console.error(err);
+        res.end(err);
+    };
+
+    res.redirect('/surveys');
+  }) 
 }

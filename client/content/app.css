@@ -112,7 +112,7 @@ h1 {
   }
 
 
-#btns,  #detailPageSubmitBtn {
+#btns,  #detailPageSubmitBtn, #answerPageSubmitBtn {
   background: #FF4742;
   border: 1px solid #FF4742;
   border-radius: 6px;
@@ -137,7 +137,7 @@ h1 {
   vertical-align: middle;
 }
 
-#detailPageSubmitBtn{
+#detailPageSubmitBtn, #answerPageSubmitBtn{
   font-size: 18px;
   line-height: 25px;
   margin-top: 10px;
@@ -145,18 +145,21 @@ h1 {
 
 #btns:hover,
 #btns:active,
-#detailPageSubmitBtn:hover,
-#detailPageSubmitBtn:active {
+#detailPageSubmitBtn:hover, #answerPageSubmitBtn:hover
+#detailPageSubmitBtn:active, #answerPageSubmitBtn:active {
   background-color: initial;
   background-position: 0 0;
   color: #FF4742;
 }
 
 #btns:active,
-#detailPageSubmitBtn:active {
+#detailPageSubmitBtn:active, #answerPageSubmitBtn:active {
   opacity: .5;
 }
 
+#answerPageSubmitBtn{
+  width: 200px;
+}
 
 .form-control1 {
   border: 1px solid #d6d6d6;
