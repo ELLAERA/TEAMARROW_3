@@ -12,5 +12,6 @@ router.get('/edit/:id', surveys_1.DisplayEditPage);
 router.post('/add', surveys_1.ProcessAddPage);
 router.post('/edit/:id', surveys_1.ProcessEditPage);
 router.get('/delete/:id', surveys_1.ProcessDeletePage);
+router.get('/answer/:id', surveys_1.DisplayAnswerPage);
 exports.default = router;
 //# sourceMappingURL=surveys.js.map

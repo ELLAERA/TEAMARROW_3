@@ -1,6 +1,5 @@
 import express from 'express';
-import { HttpError } from 'http-errors';
-import { isLoggedIn } from '../middlewares/auth';
+import { HttpError } from 'http-errors';  
 
 import Survey from '../models/surveys';
 import { UserDisplayName } from '../utils';
@@ -18,6 +17,14 @@ export function DisplayListPage(req: express.Request, res: express.Response, nex
     })
 }
 
+ 
+// Display (C)reate page
+export function DisplayAddPage(req: express.Request, res: express.Response, next: express.NextFunction) {
+  // show the add view
+  res.render('surveys/details', { title: 'Add Survey', page: 'surveys/details', item: '', displayName: UserDisplayName(req) });
+}
+
+
 // Display (E)dit page
 export function DisplayEditPage(req: express.Request, res: express.Response, next: express.NextFunction) {
   let id = req.params.id;
@@ -33,13 +40,7 @@ export function DisplayEditPage(req: express.Request, res: express.Response, nex
   })
 }
 
- 
 
-// Display (C)reate page
-export function DisplayAddPage(req: express.Request, res: express.Response, next: express.NextFunction) {
-    // show the add view
-    res.render('surveys/details', { title: 'Add Survey', page: 'surveys/details', item: '', displayName: UserDisplayName(req) });
-}
 
 // Process (E)dit page
 export function ProcessEditPage(req: express.Request, res: express.Response, next: express.NextFunction) {
@@ -49,7 +50,10 @@ export function ProcessEditPage(req: express.Request, res: express.Response, nex
         "Title": req.body.Title,
         "Author": req.body.Author,
         "StartDate": req.body.StartDate,
-        "EndDate": req.body.EndDate
+        "EndDate": req.body.EndDate,
+        "Question1": req.body.Question1, 
+        "Question2": req.body.Question2,
+        "Question3": req.body.Question3
     });
 
     Survey.updateOne({ _id: id }, updatedSurvey, {}, (err) => {
@@ -70,7 +74,10 @@ export function ProcessAddPage(req: express.Request, res: express.Response, next
         "Title": req.body.Title,
         "Author": req.body.Author,
         "StartDate": req.body.StartDate,
-        "EndDate": req.body.EndDate
+        "EndDate": req.body.EndDate,
+        "Question1": req.body.Question1, 
+        "Question2": req.body.Question2,
+        "Question3": req.body.Question3
     });
     console.log("New Survey" , newSurvey);
     Survey.create(newSurvey, (err: HttpError) => {
@@ -95,4 +102,21 @@ export function ProcessDeletePage(req: express.Request, res: express.Response, n
 
         res.redirect('/surveys');
     })
+}
+
+
+
+//
+export function DisplayAnswerPage(req: express.Request, res: express.Response, next: express.NextFunction) {
+  let id = req.params.id;
+
+  Survey.findById(id, {}, {}, (err, surveysToTake) => {
+      if (err) {
+          console.error(err);
+          res.end(err);
+      };
+
+      console.log(surveysToTake);
+      res.render('surveys/answer', { title: "Take Survey", page: "surveys/answer", item: surveysToTake, displayName: UserDisplayName(req) })
+  })
 }

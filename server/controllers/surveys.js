@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProcessDeletePage = exports.ProcessAddPage = exports.ProcessEditPage = exports.DisplayAddPage = exports.DisplayEditPage = exports.DisplayListPage = void 0;
+exports.DisplayAnswerPage = exports.ProcessDeletePage = exports.ProcessAddPage = exports.ProcessEditPage = exports.DisplayEditPage = exports.DisplayAddPage = exports.DisplayListPage = void 0;
 const surveys_1 = __importDefault(require("../models/surveys"));
 const utils_1 = require("../utils");
 function DisplayListPage(req, res, next) {
@@ -16,6 +16,10 @@ function DisplayListPage(req, res, next) {
     });
 }
 exports.DisplayListPage = DisplayListPage;
+function DisplayAddPage(req, res, next) {
+    res.render('surveys/details', { title: 'Add Survey', page: 'surveys/details', item: '', displayName: (0, utils_1.UserDisplayName)(req) });
+}
+exports.DisplayAddPage = DisplayAddPage;
 function DisplayEditPage(req, res, next) {
     let id = req.params.id;
     surveys_1.default.findById(id, {}, {}, (err, surveysToEdit) => {
@@ -29,10 +33,6 @@ function DisplayEditPage(req, res, next) {
     });
 }
 exports.DisplayEditPage = DisplayEditPage;
-function DisplayAddPage(req, res, next) {
-    res.render('surveys/details', { title: 'Add Survey', page: 'surveys/details', item: '', displayName: (0, utils_1.UserDisplayName)(req) });
-}
-exports.DisplayAddPage = DisplayAddPage;
 function ProcessEditPage(req, res, next) {
     let id = req.params.id;
     let updatedSurvey = new surveys_1.default({
@@ -40,7 +40,10 @@ function ProcessEditPage(req, res, next) {
         "Title": req.body.Title,
         "Author": req.body.Author,
         "StartDate": req.body.StartDate,
-        "EndDate": req.body.EndDate
+        "EndDate": req.body.EndDate,
+        "Question1": req.body.Question1,
+        "Question2": req.body.Question2,
+        "Question3": req.body.Question3
     });
     surveys_1.default.updateOne({ _id: id }, updatedSurvey, {}, (err) => {
         if (err) {
@@ -56,7 +59,10 @@ function ProcessAddPage(req, res, next) {
         "Title": req.body.Title,
         "Author": req.body.Author,
         "StartDate": req.body.StartDate,
-        "EndDate": req.body.EndDate
+        "EndDate": req.body.EndDate,
+        "Question1": req.body.Question1,
+        "Question2": req.body.Question2,
+        "Question3": req.body.Question3
     });
     console.log("New Survey", newSurvey);
     surveys_1.default.create(newSurvey, (err) => {
@@ -80,4 +86,17 @@ function ProcessDeletePage(req, res, next) {
     });
 }
 exports.ProcessDeletePage = ProcessDeletePage;
+function DisplayAnswerPage(req, res, next) {
+    let id = req.params.id;
+    surveys_1.default.findById(id, {}, {}, (err, surveysToTake) => {
+        if (err) {
+            console.error(err);
+            res.end(err);
+        }
+        ;
+        console.log(surveysToTake);
+        res.render('surveys/answer', { title: "Take Survey", page: "surveys/answer", item: surveysToTake, displayName: (0, utils_1.UserDisplayName)(req) });
+    });
+}
+exports.DisplayAnswerPage = DisplayAnswerPage;
 //# sourceMappingURL=surveys.js.map
