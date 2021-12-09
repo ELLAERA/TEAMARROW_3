@@ -8,7 +8,7 @@ import httpErrors from 'http-errors';
  * Get port from environment and store in Express.
  */
 
-let port = normalizePort(process.env.PORT || '1200');
+let port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 /**
