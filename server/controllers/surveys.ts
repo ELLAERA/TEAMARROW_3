@@ -152,3 +152,17 @@ export function ProcessAnswerPage(req: express.Request, res: express.Response, n
         res.redirect('/surveys');
     })
 }
+ 
+
+export function DisplayStatsPage(req: express.Request, res: express.Response, next: express.NextFunction) {
+  let id = req.params.id;
+
+  Answer.findById(id, {}, {}, (err, surveysToGetStats) => {
+      if (err) {
+          console.error(err);
+          res.end(err);
+      }; 
+      console.log(surveysToGetStats);
+      res.render('surveys/stats', { title: "Survey Statistics", page: "surveys/stats", item: surveysToGetStats, displayName: UserDisplayName(req) })
+  })
+}

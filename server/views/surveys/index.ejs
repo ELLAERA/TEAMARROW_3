@@ -6,7 +6,7 @@
       <div class="row">
         <div class="col-md-offset-1 col-md-20">
           <h1>Survey List </h1>
-          <div class="pull-right"><button class="btn btn-group-lg" onclick="window.print()"><i class="fa fa-print"> Print page</i></button>
+          <div class="pull-right"> <button id="printBtn" onclick="window.print()"><i class="fa fa-print"><span> Print page</span></i></button>
           </div>
           <br><br><br><br> 
           <a href="/surveys/add" id="create_btn"><i class="fa fa-plus"></i> Create Survey</a>
@@ -42,6 +42,7 @@
                     <a href="/surveys/delete/<%= surveys[count]._id %>" id="btns2"> Delete</a>
                   </td>
                     <td class="text-center">
+                      <a href="/surveys/stats/<%= surveys[count]._id %>" id="statsBtn"><i class="fa fa-bar-chart" aria-hidden="true"></i></a>
                       <a href="/surveys/answer/<%= surveys[count]._id %>" id="btns"> Start Survey</a>
                     
                   </td>

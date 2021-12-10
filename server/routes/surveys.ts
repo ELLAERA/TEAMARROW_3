@@ -1,5 +1,5 @@
 import express from 'express';
-import { DisplayListPage, DisplayAddPage, ProcessAnswerPage, DisplayAnswerPage, DisplayEditPage, ProcessAddPage, ProcessEditPage, ProcessDeletePage } from '../controllers/surveys';
+import { DisplayListPage, DisplayAddPage, ProcessAnswerPage, DisplayAnswerPage, DisplayStatsPage, DisplayEditPage, ProcessAddPage, ProcessEditPage, ProcessDeletePage } from '../controllers/surveys';
 
 
 const router = express.Router();
@@ -19,5 +19,7 @@ router.get('/delete/:id', ProcessDeletePage);
 router.get('/answer/:id', DisplayAnswerPage); 
 
 router.post('/answer/:id', ProcessAnswerPage); 
+
+router.get('/stats/:id', DisplayStatsPage); 
 
 export default router;

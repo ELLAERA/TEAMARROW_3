@@ -1,0 +1,42 @@
+<% include ../partials/header.ejs %>
+<div class="container">
+  <button id="printBtn" onclick="window.print()"><i class="fa fa-print"> Print page</i></button>
+        
+  <div class="row">
+    <div class="col-md-offset-1 col-md-20"> 
+    <h1><%= title %></h1> 
+<table class="table" id="statsTable">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+</div>
+</div>
+<% include ../partials/footer.ejs %>

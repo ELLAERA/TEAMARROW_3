@@ -3,9 +3,11 @@
      <div class="container">
       <div class="row">
         <div class="col-md-offset-3 col-md-6">
-          <h1><%= title %></h1>          <div class="pull-right"><button class="btn btn-group-lg" onclick="window.print()"><i class="fa fa-print"> Print page</i></button>
+          <button id="printBtn" onclick="window.print()"><i class="fa fa-print"><span> Print page</span></i></button>
+          <h1><%= title %></h1>          
 
-            <form class="form" method="post">
+            <form class="form" method="post" id="surveyForm">
+              <div style="padding: 30px;" >
               <div class="form-group">
                 <label for="NameTextField">Survey Title</label>
                 <input type="text" class="form-control1" id="titleField"
@@ -26,7 +28,7 @@
                 <input type="text" class="form-control1"  id="EndDateTextField"
                 placeholder="" name="EndDate" value="<%= item.EndDate %>"  required>
               </div>
-
+             </div>
               <br>
 
               <% include ../surveys/form.ejs %>

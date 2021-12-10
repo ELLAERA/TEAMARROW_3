@@ -18,8 +18,7 @@ window.onload = function() {
     let selectOption1 = document.createElement("option");
     let selectOption2 = document.createElement("option");
     
-    selectBtn.style.width = "80%";
-    delBtn.style.width = "20%";
+    selectBtn.style.width = "83%"; 
     questionInput.setAttribute("id", "questionInput");
     questionInput.setAttribute("class", "form-control1");
     questionInput.setAttribute("placeholder", "Enter Question");
@@ -27,7 +26,7 @@ window.onload = function() {
     questionInput.setAttribute("type", "text");
     delBtn.setAttribute("id", "btns4");
     selectOption1.text = "Short Answer";
-    selectOption2.text = "Agree/Disagree"; 
+    //selectOption2.text = "Agree/Disagree"; 
     selectBtn.setAttribute("id", "btns4");
     newDiv.setAttribute("class", "newDiv"); 
 
