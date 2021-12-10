@@ -123,19 +123,20 @@ export function DisplayAnswerPage(req: express.Request, res: express.Response, n
 }
 
 export function ProcessAnswerPage(req: express.Request, res: express.Response, next: express.NextFunction) {
-
+   let id = req.params.id;
+    console.log("survey id", req.params.id );
   let newAnswer = new Answer({ 
-    "Answer1": req.body.Answer1,
-    "Answer2": req.body.Answer2,
-    "Answer3": req.body.Answer3
+    "SurveyId": id,
+    "Answer1": req.body.answer1,
+    "Answer2": req.body.answer2,
+    "Answer3": req.body.answer3
   });
-  console.log("New Survey" , newAnswer);
+  console.log("answer to send" , newAnswer);
   Answer.create(newAnswer, (err: HttpError) => {
     if (err) {
         console.error(err);
         res.end(err);
     };
-
     res.redirect('/surveys');
   }) 
 }

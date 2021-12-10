@@ -101,12 +101,15 @@ function DisplayAnswerPage(req, res, next) {
 }
 exports.DisplayAnswerPage = DisplayAnswerPage;
 function ProcessAnswerPage(req, res, next) {
+    let id = req.params.id;
+    console.log("survey id", req.params.id);
     let newAnswer = new answers_1.default({
-        "Answer1": req.body.Answer1,
-        "Answer2": req.body.Answer2,
-        "Answer3": req.body.Answer3
+        "SurveyId": id,
+        "Answer1": req.body.answer1,
+        "Answer2": req.body.answer2,
+        "Answer3": req.body.answer3
     });
-    console.log("New Survey", newAnswer);
+    console.log("answer to send", newAnswer);
     answers_1.default.create(newAnswer, (err) => {
         if (err) {
             console.error(err);
