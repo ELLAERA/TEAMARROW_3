@@ -9,7 +9,7 @@ const answers_1 = __importDefault(require("../models/answers"));
 const utils_1 = require("../utils");
 const mongoose_1 = __importDefault(require("mongoose"));
 function DisplayListPage(req, res, next) {
-    surveys_1.default.find(function (err, surveys) {
+    let surveys = surveys_1.default.find(function (err, surveys) {
         if (err) {
             console.error(err);
             res.end(err);

@@ -8,7 +8,8 @@ let Survey = new mongoose.Schema({
     EndDate: String,
     Question1: String,
     Question2: String,
-    Question3: String
+    Question3: String,
+    Responses: Number
 },
 {
   collection: "surveys"

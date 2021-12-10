@@ -11,7 +11,8 @@ let Survey = new mongoose_1.default.Schema({
     EndDate: String,
     Question1: String,
     Question2: String,
-    Question3: String
+    Question3: String,
+    Responses: Number
 }, {
     collection: "surveys"
 });
