@@ -4,6 +4,8 @@ import { HttpError } from 'http-errors';
 import Survey from '../models/surveys';
 import Answer from '../models/answers';
 import { UserDisplayName } from '../utils';
+import mongoose from 'mongoose';
+
 
 //(R)ead in CRUD
 export function DisplayListPage(req: express.Request, res: express.Response, next: express.NextFunction) {
@@ -124,9 +126,10 @@ export function DisplayAnswerPage(req: express.Request, res: express.Response, n
 
 export function ProcessAnswerPage(req: express.Request, res: express.Response, next: express.NextFunction) {
    let id = req.params.id;
-    console.log("survey id", req.params.id );
+    console.log("survey id obj", new mongoose.Types.ObjectId(id) );
+
   let newAnswer = new Answer({ 
-    "SurveyId": id,
+    "SurveyId": mongoose.Types.ObjectId.createFromHexString(id),
     "Answer1": req.body.answer1,
     "Answer2": req.body.answer2,
     "Answer3": req.body.answer3

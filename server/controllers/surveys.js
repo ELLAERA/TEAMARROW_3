@@ -7,6 +7,7 @@ exports.ProcessAnswerPage = exports.DisplayAnswerPage = exports.ProcessDeletePag
 const surveys_1 = __importDefault(require("../models/surveys"));
 const answers_1 = __importDefault(require("../models/answers"));
 const utils_1 = require("../utils");
+const mongoose_1 = __importDefault(require("mongoose"));
 function DisplayListPage(req, res, next) {
     surveys_1.default.find(function (err, surveys) {
         if (err) {
@@ -102,9 +103,9 @@ function DisplayAnswerPage(req, res, next) {
 exports.DisplayAnswerPage = DisplayAnswerPage;
 function ProcessAnswerPage(req, res, next) {
     let id = req.params.id;
-    console.log("survey id", req.params.id);
+    console.log("survey id obj", new mongoose_1.default.Types.ObjectId(id));
     let newAnswer = new answers_1.default({
-        "SurveyId": id,
+        "SurveyId": mongoose_1.default.Types.ObjectId.createFromHexString(id),
         "Answer1": req.body.answer1,
         "Answer2": req.body.answer2,
         "Answer3": req.body.answer3
