@@ -128,7 +128,6 @@ export function ProcessAnswerPage(req: express.Request, res: express.Response, n
     "Answer1": req.body.Answer1,
     "Answer2": req.body.Answer2,
     "Answer3": req.body.Answer3
-    
   });
   console.log("New Survey" , newAnswer);
   Answer.create(newAnswer, (err: HttpError) => {
