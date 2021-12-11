@@ -1,4 +1,13 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -103,7 +112,6 @@ function DisplayAnswerPage(req, res, next) {
 exports.DisplayAnswerPage = DisplayAnswerPage;
 function ProcessAnswerPage(req, res, next) {
     let id = req.params.id;
-    console.log("survey id obj", new mongoose_1.default.Types.ObjectId(id));
     let newAnswer = new answers_1.default({
         "SurveyId": mongoose_1.default.Types.ObjectId.createFromHexString(id),
         "Answer1": req.body.answer1,
@@ -122,15 +130,34 @@ function ProcessAnswerPage(req, res, next) {
 }
 exports.ProcessAnswerPage = ProcessAnswerPage;
 function DisplayStatsPage(req, res, next) {
-    let id = req.params.id;
-    answers_1.default.findById(id, {}, {}, (err, surveysToGetStats) => {
-        if (err) {
-            console.error(err);
-            res.end(err);
-        }
-        ;
-        console.log(surveysToGetStats);
-        res.render('surveys/stats', { title: "Survey Statistics", page: "surveys/stats", item: surveysToGetStats, displayName: (0, utils_1.UserDisplayName)(req) });
+    return __awaiter(this, void 0, void 0, function* () {
+        let id = req.params.id;
+        console.log("finding survey with id: ", id);
+        Promise.all([
+            yield answers_1.default.find({ SurveyId: mongoose_1.default.Types.ObjectId.createFromHexString(id) }, (err, answers) => {
+                if (err) {
+                    console.error(err);
+                    res.end(err);
+                }
+                ;
+            }).clone(),
+            yield surveys_1.default.findById(id, {}, {}, (err, surveysToEdit) => {
+                if (err) {
+                    console.error(err);
+                    res.end(err);
+                }
+                ;
+            }).clone(),
+        ])
+            .then(results => {
+            const [answers, survey] = results;
+            console.log("answers", answers);
+            console.log("survey:", survey);
+            res.render('surveys/stats', { title: "Survey Statistics", page: "surveys/stats", item: survey, answers: answers, displayName: (0, utils_1.UserDisplayName)(req) });
+        })
+            .catch(err => {
+            console.error("Something went wrong", err);
+        });
     });
 }
 exports.DisplayStatsPage = DisplayStatsPage;

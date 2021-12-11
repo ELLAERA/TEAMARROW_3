@@ -1,42 +1,35 @@
 <% include ../partials/header.ejs %>
-<div class="container">
-  <button id="printBtn" onclick="window.print()"><i class="fa fa-print"> Print page</i></button>
-        
-  <div class="row">
-    <div class="col-md-offset-1 col-md-20"> 
-    <h1><%= title %></h1> 
-<table class="table" id="statsTable">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+  <div class="container">
+    <button id="printBtn" onclick="window.print()"><i class="fa fa-print"> Print page</i></button>
 
-</div>
-</div>
-</div>
-<% include ../partials/footer.ejs %>
+    <div class="row">
+      <div class="col-md-offset-1 col-md-20">
+        <h1>
+          <%= title %>
+        </h1>
+
+        <div>
+          <h2> Survey Title: <%= item.Title %>
+          </h2>
+          <h3> Survey Response count: <%= answers.length %>
+          </h3>
+          <% for (let count=0; count < answers.length; count++) { %>
+            <h4>Survey Response: <%= count + 1 %>
+            </h4>
+            <h5>
+              Question 1: <%= answers[count].Answer1 %>
+            </h5>
+            <h5>
+              Question 2: <%= answers[count].Answer2 %>
+            </h5>
+            <h5>
+              Question 3: <%= answers[count].Answer3 %>
+            </h5>
+            <% } %>
+        </div>
+        <a style="margin-top:20px" class="btn btn-dark" href="/surveys" id="goToSurvey"> Go to Surveys</a>
+
+      </div>
+    </div>
+  </div>
+  <% include ../partials/footer.ejs %>

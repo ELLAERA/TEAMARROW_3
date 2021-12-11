@@ -10,21 +10,11 @@ import mongoose from 'mongoose';
 //(R)ead in CRUD
 export function DisplayListPage(req: express.Request, res: express.Response, next: express.NextFunction) {
 
-  let surveys =  Survey.find(function (err, surveys) {
+    let surveys = Survey.find(function (err, surveys) {
         if (err) {
             console.error(err);
             res.end(err);
         }
-        // let answers =  Answer.find(function (err, answers) {
-        //     if (err) {
-        //         console.error(err);
-        //         res.end(err);
-        //     }  
-        //           console.log('Answers', answers);
-
-        // });
-
-        // contactCollection.sort((a, b) => a.contactName.toLowerCase().localeCompare(b.contactName.toLowerCase()))
         res.render('surveys/index', { title: 'Surveys', page: 'surveys/index', surveys: surveys, displayName: UserDisplayName(req) })
     });
 }
@@ -135,8 +125,6 @@ export function DisplayAnswerPage(req: express.Request, res: express.Response, n
 
 export function ProcessAnswerPage(req: express.Request, res: express.Response, next: express.NextFunction) {
     let id = req.params.id;
-    console.log("survey id obj", new mongoose.Types.ObjectId(id));
-
     let newAnswer = new Answer({
         "SurveyId": mongoose.Types.ObjectId.createFromHexString(id),
         "Answer1": req.body.answer1,
@@ -152,17 +140,36 @@ export function ProcessAnswerPage(req: express.Request, res: express.Response, n
         res.redirect('/surveys');
     })
 }
- 
 
-export function DisplayStatsPage(req: express.Request, res: express.Response, next: express.NextFunction) {
-  let id = req.params.id;
 
-  Answer.findById(id, {}, {}, (err, surveysToGetStats) => {
-      if (err) {
-          console.error(err);
-          res.end(err);
-      }; 
-      console.log(surveysToGetStats);
-      res.render('surveys/stats', { title: "Survey Statistics", page: "surveys/stats", item: surveysToGetStats, displayName: UserDisplayName(req) })
-  })
+export async function DisplayStatsPage(req: express.Request, res: express.Response, next: express.NextFunction) {
+    let id = req.params.id;
+    console.log("finding survey with id: ", id);
+    Promise.all([
+        await Answer.find({ SurveyId: mongoose.Types.ObjectId.createFromHexString(id) }, (err, answers) => {
+            if (err) {
+                console.error(err);
+                res.end(err);
+            };
+            // console.log(answers);
+        }).clone(),
+        await Survey.findById(id, {}, {}, (err, surveysToEdit) => {
+            if (err) {
+                console.error(err);
+                res.end(err);
+            };
+
+            // console.log(surveysToEdit);
+        }).clone(),
+    ])
+        .then(results => {
+            //results return an array
+            const [answers, survey] = results;
+            // console.log("answers", answers);
+            // console.log("survey:", survey);
+            res.render('surveys/stats', { title: "Survey Statistics", page: "surveys/stats", item: survey, answers: answers, displayName: UserDisplayName(req) });
+        })
+        .catch(err => {
+            console.error("Something went wrong", err);
+        })
 }
