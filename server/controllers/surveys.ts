@@ -158,7 +158,6 @@ export async function DisplayStatsPage(req: express.Request, res: express.Respon
                 console.error(err);
                 res.end(err);
             };
-
             // console.log(surveysToEdit);
         }).clone(),
     ])
